@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from '@/app.module';
 import * as express from 'express';
 import { HttpStatusInterceptor } from '@/interceptors/http-status.interceptor';
+import { ensureSchema } from '@/storage/database/migrate';
 
 function parsePort(): number {
   const args = process.argv.slice(2);
@@ -16,6 +17,8 @@ function parsePort(): number {
 }
 
 async function bootstrap() {
+  await ensureSchema();
+
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
