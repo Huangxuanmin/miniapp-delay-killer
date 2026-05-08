@@ -27,7 +27,7 @@ export const TaskCard = ({ task, onToggleStep }: TaskCardProps) => {
       <CardHeader className="pb-3">
         <View className="flex items-start justify-between gap-3 mb-3">
           <View className="flex-1">
-            <View className="flex items-center gap-2 mb-1.5 flex-wrap">
+            <View className="flex items-center gap-2 mb-2 flex-wrap">
               <CardTitle className="text-base font-semibold text-slate-900">{task.title}</CardTitle>
               <Badge
                 variant="secondary"
@@ -57,14 +57,14 @@ export const TaskCard = ({ task, onToggleStep }: TaskCardProps) => {
         </View>
 
         {/* 进度条 */}
-        <View className="bg-slate-50 border border-slate-100 rounded-xl px-3 py-2.5">
+        <View className="bg-slate-50 border border-slate-100 rounded-xl px-3 py-3">
           <View className="flex items-center justify-between mb-2">
             <Text className="text-xs text-slate-500 tracking-wide">
               已完成 {completedSteps}/{task.steps.length}
             </Text>
             <Text className="text-xs font-semibold text-slate-900">{progress}%</Text>
           </View>
-          <Progress value={progress} className="h-1.5" />
+          <Progress value={progress} className="h-2" />
         </View>
       </CardHeader>
 
@@ -75,16 +75,16 @@ export const TaskCard = ({ task, onToggleStep }: TaskCardProps) => {
             key={step.id}
             className={`flex items-start gap-3 p-3 rounded-xl border transition-colors ${
               step.completed
-                ? 'border-slate-100 bg-slate-50/60'
+                ? 'border-slate-100 bg-slate-50 bg-opacity-60'
                 : 'border-slate-200 bg-white'
             }`}
             onClick={() => onToggleStep(task.id, step.id, step.completed)}
           >
-            <View className="shrink-0 mt-0.5">
+            <View className="shrink-0 mt-1">
               <Checkbox checked={step.completed} />
             </View>
             <View className="flex-1">
-              <View className="flex items-center gap-2 mb-0.5">
+              <View className="flex items-center gap-2 mb-1">
                 <Text className="text-xs font-mono text-slate-400">
                   {String(idx + 1).padStart(2, '0')}
                 </Text>

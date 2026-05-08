@@ -2,7 +2,7 @@ import { View, Text } from '@tarojs/components'
 import { Sparkles } from 'lucide-react-taro'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 import { ACCENT } from '../constants'
 
 interface BasicModeFormProps {
@@ -34,11 +34,12 @@ export const BasicModeForm = ({
       <CardContent className="space-y-4">
         <View>
           <Text className="block text-xs font-medium text-slate-600 mb-2 tracking-wide">任务标题</Text>
-          <Input
-            className="w-full bg-transparent text-lg text-slate-900"
+          <Textarea
+            className="w-full h-24 bg-transparent text-lg text-slate-900"
             placeholder="例如：完成论文撰写"
-            placeholderStyle="color: #f1f5f9"
+            placeholderClass="text-slate-300"
             value={taskTitle}
+            maxlength={200}
             onInput={(e) => onTitleChange(e.detail.value)}
           />
         </View>
